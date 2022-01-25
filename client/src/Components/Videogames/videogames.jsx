@@ -6,6 +6,7 @@ import Paginado from '../Paged/paged';
 import { Loader } from '../Loader/loader';
 import { VideogamesCards } from '../VideogamesCards/videogamesCards';
 import './videogames.css'
+import { NotFound } from '../NotFound/notFound';
 
 export const Videogames = () => {
     const dispatch = useDispatch();
@@ -25,14 +26,14 @@ export const Videogames = () => {
     const [currentPage, setCurrentPage] = useState(1);
     // eslint-disable-next-line
     const [videogamesPerPage, setVideogamesPerPage] = useState(15);
-    const indexOfLastVideogame = currentPage * videogamesPerPage // 15
+    const indexOfLastVideogame = currentPage * videogamesPerPage // 15 
     const indexOfFirstVideogame = indexOfLastVideogame - videogamesPerPage // 0
     const currentVideogames = allVideogames.slice(indexOfFirstVideogame, indexOfLastVideogame)
+    const countVideogames = allVideogames.length > 0 ? true : false;
 
     function paginado(pageNumber){
         setCurrentPage(pageNumber)
     }
-
 
     function handleSort(e) {
         e.preventDefault();
@@ -61,19 +62,22 @@ export const Videogames = () => {
         dispatch(getAllGenres())
         dispatch(loaderTrue())
         setCurrentPage(1)
+
     }
 
     return (
 
         <div>
-            esto es home
             <Nav sort={handleSort} filterGenres={handleFilterGenres} filterCreated={handleFilterCreated} setCurrentPage={setCurrentPage} refresh={habdleRefresh}></Nav>
             {loader ? <Loader/> :
             <div>
-            <Paginado videogamesPerPage={videogamesPerPage} allVideogames={allVideogames.length} paginado={paginado}></Paginado>
-            <div className='cartas'>
-            <VideogamesCards allVideogames={currentVideogames}/>
-            </div>
+            {countVideogames ? <div>
+                <Paginado videogamesPerPage={videogamesPerPage} allVideogames={allVideogames.length} paginado={paginado}></Paginado>
+                <div className='cards'>
+                <VideogamesCards allVideogames={currentVideogames}/>
+                </div>
+                <Paginado videogamesPerPage={videogamesPerPage} allVideogames={allVideogames.length} paginado={paginado}></Paginado>
+                </div>  : <NotFound/>} 
             </div>    
             }
         </div>

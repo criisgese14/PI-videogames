@@ -1,8 +1,55 @@
-.filtros{
+.nav {
+    background-color: #141b29;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px 0 10px;
+    
+}
+
+.boton-nav {
+    border-radius: 5px;
+    border: 1px solid yellow;
+    padding: 5px;
+    margin: 5px;
+    background-color: yellow;
+}
+
+.boton-nav:hover {
+    cursor: pointer;
+    background-color: #284259;
+    color: yellow;
+    border: 1px solid yellow;
+}
+
+.filters-nav{
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    color: white;
+    font-family: 'Dongle', sans-serif;
 }
+
+.filter-nav {
+    display: flex;
+    margin: auto;
+    padding: 20px;
+}
+
+.title-nav {
+    margin: auto;
+}
+
+.select {
+    border-radius: 5px;
+    background-color: #141b29;
+    border: 1px solid yellow;
+    color: yellow;
+    cursor: pointer;
+}
+
+
 

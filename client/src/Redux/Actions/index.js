@@ -10,113 +10,113 @@ export const FILTER_BY_GENRE = 'FILTER_BY_GENRE'
 export const POST_VIDEOGAME = 'POST_VIDEOGAME'
 export const CLEAR_DETAIL = 'CLEAR_DETAIL'
 export const LOADER = 'LOADER'
+export const GET_ALL_PLATFORMS = 'GET_ALL_PLATFORMS'
+
 
 export function getAllVideogames() {
-    return async dispatch => {
-    try {
-        const jueguitos = await axios.get('http://localhost:3001/videogames')
-        dispatch({
-            type: GET_ALL_VIDEOGAMES, 
-            payload: jueguitos.data})    
-    } catch (error) {
-        console.log(error)
-    }
+    return dispatch => {
+        axios.get('http://localhost:3001/videogames')
+        .then(juegos => {
+            dispatch({
+                type: GET_ALL_VIDEOGAMES,
+                payload: juegos.data
+            })
+        })
+        .catch(error => console.log(error))
     }
 }
 
 export function getVideogamesByName(payload){
-    return async dispatch => {
-        try {
-            const juegos = await axios.get('http://localhost:3001/videogames?name='+ payload)
-            dispatch({
+    return dispatch => {
+        axios.get('http://localhost:3001/videogames?name=' + payload)
+        .then (juego => {
+            dispatch( {
                 type: GET_VIDEOGAMES_BY_NAME,
-                payload: juegos.data
+                payload: juego.data
             })
-        } catch (error) {
-            console.log(error)
-        }
+        })
     }
 }
 
 export function getAllGenres() {
-    return async dispatch => {
-        try {
-            const generos = await axios.get('http://localhost:3001/genres')
+    
+    return dispatch => {
+        axios.get('http://localhost:3001/genres')
+        .then(generos => {
             dispatch({
                 type: GET_ALL_GENRES,
                 payload: generos.data
             })
-        } catch (error) {
-            console.log(error)
-        }
+        })
+    }
+}
+
+export function getAllPlatforms() {
+    return dispatch => {
+        axios.get('http://localhost:3001/platforms')
+        .then(platforms => {
+            dispatch({
+                type: GET_ALL_PLATFORMS,
+                payload: platforms.data
+            })
+        })
     }
 }
 
 export function getVideogameDetail(id) {
-    return async dispatch => {
-        try {
-            const juego = await axios.get(`http://localhost:3001/videogame/${id}`)
+    return dispatch => {
+        axios.get('http://localhost:3001/videogame/' + id)
+        .then(game => {
             dispatch({
                 type: GET_VIDEOGAME_DETAIL,
-                payload: juego.data
+                payload: game.data
             })
-        } catch (error) {
-            console.log(error)
-        }
+        })
     }
 }
 
 export function clearDetail(){
-    return dispatch => {
-        dispatch({
+    return {
         type: CLEAR_DETAIL
-    })}
+    }
 }
 export function createVideogame(newVideogame){
     console.log(newVideogame)
-    return async dispatch => {
-        try {
-            const post = await axios.post('http://localhost:3001/videogame', newVideogame)
+    return dispatch => {
+        axios.post('http://localhost:3001/videogame', newVideogame)
+        .then(post => {
             dispatch({
                 type: POST_VIDEOGAME,
                 payload: post
             })
-        } catch (error) {
-            console.log('falló createVideogame ' + error)
-        }
+        })
     }
 }
 
 export function orderBy(payload) {
-    return dispatch => {
-        dispatch({
+    return {
             type: ORDER_BY,
             payload,
-        });
     };
 }
 
 export function filterByGenre(payload) {
     return {
-        type: FILTER_BY_GENRE,
-        payload
+            type: FILTER_BY_GENRE,
+            payload
     }
 }
 
 export function filterByCreatedOrExist(payload){
     console.log(payload)
-    return dispatch => {
-        dispatch({
+    return {
             type: CREATED_OR_EXIST,
             payload
-        })
     }
 }
 
 export function loaderTrue(){
-    return dispatch => {
-        dispatch({
+    return {
             type: LOADER,
-        })
     }
 }

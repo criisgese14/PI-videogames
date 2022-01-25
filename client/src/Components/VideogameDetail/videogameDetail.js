@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom";
 import { clearDetail, getVideogameDetail } from "../../Redux/Actions";
 import { Loader } from "../Loader/loader";
-
+import gif from '../VideogameCard/wrS.gif'
+import './videogameDetail.css'
 
 export const VideogameDetail = () => {
     const dispatch = useDispatch();
@@ -14,7 +15,6 @@ export const VideogameDetail = () => {
         dispatch(getVideogameDetail(id));
         return () => {
             dispatch(clearDetail())
-            //dispatch(loaderTrue())
         }
         // eslint-disable-next-line
     }, []);
@@ -24,27 +24,38 @@ export const VideogameDetail = () => {
         {loader ? <Loader/> :
         <div key={id}>
             <Link to='/home'>
-                <button>Back</button>
+                <button className="back-boton">Back</button>
             </Link>
-            <h1> Detalles del videojuego</h1>
-            <h2>Nombre: {videogame.name}</h2>
-            <img src={videogame.img} alt={videogame.name}/>
-            <p>Description: {videogame.description}</p>
-            <h3>Released: {videogame.released}</h3>
-            <h3>Rating: {videogame.rating}</h3>
-            <h3>Platforms: </h3>
+            <div className="card-game">
+            <div className="card-detail">   
+            <h2 className="title-detail">{videogame.name}</h2>
+            {videogame.img ? <img src={videogame.img} alt={videogame.name} className="img-detail"/> : <img src={gif} alt="a" className="img-detail"/>}
+            <div className="container-detail-RyR">
+            <h3 className="detail-RyR">Released: {videogame.released}</h3>
+            <h3 className="detail-RyR">Rating: {videogame.rating}</h3>
+            </div>
+            <h4 className="description-detail">{videogame.description}</h4>
+            </div>
+            
+            <div className="container-detail-PyG">
+            <div className="detail-PyG">
+            <h3>Platforms </h3>
             {videogame.platforms?.map(p => {
                 return (
                     <h3 key={p}>{p}</h3>
                 )
             })}
-            <h3>Genres: </h3>
+            </div>
+            <div className="detail-PyG">
+            <h3>Genres </h3>
             {videogame.genres?.map(p => {
                 return(  
                     <h3 key={p.name}>{p.name}</h3>
                 )
             })}
-
+            </div>
+            </div>
+        </div>
         </div>
         }
         </div>

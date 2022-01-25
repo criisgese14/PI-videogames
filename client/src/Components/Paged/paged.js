@@ -12,8 +12,8 @@ export default function Paginado ({videogamesPerPage, allVideogames, paginado}){
         <nav>
                 { pageNumbers?.map(n => {
                     return(
-                    <li key={n} className="paginas">
-                    <ul onClick={() => paginado(n)}>{n}</ul>
+                    <li key={n} className="pags">
+                    <ul onClick={() => paginado(n)} className="numbers-paged">{n}</ul>
                     </li>
                     )
                 }) }

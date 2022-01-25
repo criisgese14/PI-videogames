@@ -1,7 +1,10 @@
-
-
+import loading from './loading (2).gif'
+import './loader.css'
 export const Loader = () => {
     return (
-        <h1>Cargando...</h1>
+        <div>
+            <h1 className='titulocargando'>Loading...</h1>
+            <img src={loading} alt='loader' className='img-loading'/>
+            </div>
     )
 }

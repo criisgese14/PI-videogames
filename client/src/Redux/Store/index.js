@@ -5,7 +5,7 @@ import thunk from "redux-thunk";
 
 export const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunk)) //Me permite usar las redux dev tools, y el thunk es para poder realizar acciones asincrónicas
+  composeWithDevTools(applyMiddleware(thunk))
 );
 
 export default store;

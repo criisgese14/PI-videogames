@@ -5,38 +5,52 @@ import "./nav.css"
 export const Nav = ({sort, filterGenres, filterCreated, setCurrentPage, refresh}) => {
     const genres = useSelector(state => state.genres)
     return (
-        <div>
-            <button onClick={refresh}>Refresh</button>
-            <SearchBar setCurrentPage={setCurrentPage}></SearchBar>
-            <Link to='/create'><button>Crear videojuego</button></Link>
-            <div className='filtros'>
-            <h4>Filtrar por generos:</h4>
-            <select onChange={e => filterGenres(e)}>
-            <option value="Todos">Por defecto</option>
+        <div className='nav'>
+            <div className='header'>
+            <Link to='/'><button className='boton-nav'>Back</button></Link>
+                <SearchBar setCurrentPage={setCurrentPage}></SearchBar>
+                <div>
+                <button onClick={refresh} className='boton-nav'>Refresh</button>
+                <Link to='/create'><button className='boton-nav'>Create videogame</button></Link>
+                </div>
+            </div>
+            <div className='filters-nav'>
+            <div className='filter-nav'>
+            <h2 className='title-nav'>Order by name:</h2>
+            <select onChange={e => sort(e)} className='select'>
+                <option value='Default'>Default</option>
+                <option value='Ascendente'>A - Z</option>
+                <option value='Descendente'>Z - A</option>
+            </select>
+            </div>
+            <div className='filter-nav'>
+            <h2 className='title-nav'>Order by rating:</h2>
+            <select onChange={e => sort(e)} className='select'>
+                <option value='Default'>Default</option>
+                <option value='Rating +'>Rating +</option>
+                <option value='Rating -'>Rating -</option>
+            </select>
+            </div>
+            <div className='filter-nav'>
+            <h2 className='title-nav'>Filer by genres:</h2>
+            <select onChange={e => filterGenres(e)} className='select'>
+            <option value="Todos">Default</option>
                 {genres?.map(g => {
                     return (
                         <option key= {g.name} value={g.name}>{g.name}</option>
                     )
                 })}
             </select>
-            <h4>Filtrar juegos: </h4>
-            <select onChange={e => filterCreated(e)}>
-                <option value='Todos'>Todos</option>
-                <option value='number'>Existentes</option>
-                <option value='string'>Creados</option>
+            </div>
+            <div className='filter-nav'>
+            <h2 className='title-nav'>Filter games: </h2>
+            <select onChange={e => filterCreated(e)} className='select'>
+                <option value='Todos'>All</option>
+                <option value='number'>Existent</option>
+                <option value='string'>Created</option>
             </select>
-            <h4>Ordenar por nombre:</h4>
-            <select onChange={e => sort(e)}>
-                <option value='Default'>Por defecto</option>
-                <option value='Ascendente'>Ascendente</option>
-                <option value='Descendente'>Descendente</option>
-            </select>
-            <h4>Ordenar por rating:</h4>
-            <select onChange={e => sort(e)}>
-                <option value='Default'>Por defecto</option>
-                <option value='Rating +'>Rating +</option>
-                <option value='Rating -'>Rating -</option>
-            </select>
+            </div>
+           
             </div>
         </div>
     )

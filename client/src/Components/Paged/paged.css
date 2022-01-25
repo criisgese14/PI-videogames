@@ -1,3 +1,29 @@
-.paginas {
+.pags {
     display: inline-block;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.numbers-paged {
+    background-color: #284259;
+    color: yellow;
+    border-radius: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin: 0px;
+}
+
+.numbers-paged:hover {
+    cursor: pointer;
+    background-color: yellow;
+    color: black;
+}
+
+.numbers-paged:focus {
+    background-color: red;
+    outline: red;
 }

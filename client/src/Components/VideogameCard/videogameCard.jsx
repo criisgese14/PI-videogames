@@ -1,20 +1,26 @@
 import { Link } from "react-router-dom"
 import './videogameCard.css'
-
-const VideogameCard = ({id, name, img, genres}) => {
+import gif from './wrS.gif' 
+const VideogameCard = ({id, name, img, genres, rating}) => {
     return (
-        <div className="carta">
-        <Link to={`/detail/${id}`} key={id}>
+        <div className="card">
         <div key={id}>
-            <h1>{name}</h1>
-            <img src={img} alt={name} className="img"/>
-            <p className="generos"> {genres?.map(g => {
+            <div className="container-card">
+            {img ? <img src={img} alt={name} className="img-card"/> : <img src={gif} alt="a" className="img-card"/>}
+            { rating && <p className="rating-card">{rating} ⭐</p> }
+            <Link to={`/detail/${id}`} key={id}>
+                <h2 className="link-detail">Details</h2>
+            </Link>
+            </div>
+            <h1 className="title-card">{name}</h1>
+            <h2 className="genres-card"> {genres?.map(g => {
                 return (
-                    <li key={g}>{g}</li>
+                    <span key={g} className="genre-card">{g}</span>
                 )
-            })}</p>
+            })}</h2>
+            
         </div>
-        </Link>
+        
         </div>
     )
 }

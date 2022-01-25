@@ -11,9 +11,9 @@ export const VideogamesCards = ({allVideogames}) => {
                             name={g.name}
                             img={g.img}
                             genres={g.genres}
+                            rating={g.rating}
                             />
             )
         })
-        
     )
 }

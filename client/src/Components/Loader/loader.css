@@ -1,0 +1,11 @@
+.titulocargando{
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-family: 'Dongle', sans-serif;
+    color: yellow;
+    font-size: 400%;
+}
+
+.img-loading {
+    width: 20%;
+}

@@ -1,22 +1,110 @@
-.carta {
-    width: 300px;
-    height: 350px;
+*{
+    list-style: none;
+    text-decoration: none;
+}
+
+.card {
+    position: relative;
+    width: 310px;
+    height: 334px;
     display: flex;
+    flex-direction: column;
+    margin: 20px;
+    border-radius: 24px;
+    border: 3px solid yellow;
     align-items: center;
-    border: 2px solid;
+    background-color: #141b29;
+}
+
+.container-card {
+    overflow:hidden;
+    width: 310px;
+    height: 180px;
+    cursor: pointer;
     border-radius: 20px;
-    margin: 25px;
-    padding: 20px;
 }
 
-.img {
-    width: 300px;
-    height: 150px;
+.container-card:hover > .img-card {
+    filter: blur(5px);
 }
 
-.generos{
+.container-card:hover .link-detail {
+    opacity: 1;
+    visibility: visible;
+}
+
+.img-card {
+    object-fit: cover;
+    object-position: center;
+    width: 310px;
+    height: 180px;
+    transition: all 500ms ease;
+}
+
+.img-card:hover {
+    border-radius: 20px;
+}
+
+.rating-card {
+    font-size: 75%;
+    position: absolute;
+    margin: auto;
+    padding: 1% 2%;
+    top: 3%;
+    left: 78%;
+    background-color: #141b29;
+    color: yellow;
+    border: 2px solid yellow;
+    border-radius: 10px;
+}
+
+.link-detail {
+    position: absolute;
+    top: 75px;
+    left: 80px;
+    display: flex;
+    justify-content: center;
+    background-color: yellow;
+    color: black;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-family: 'Dongle', sans-serif;
+    width: 50%;
+    margin: auto;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.link-detail:hover {
+    background-color: #141b29;
+    border: 1px solid yellow;
+    color: yellow;
+}
+
+.title-card {
+    background-color: #141b29;
+    margin-top: 3px;
+    margin-bottom: -10px;
+    font-family: 'Dongle', sans-serif;
+    color: yellow;
+    overflow-wrap:unset
+}
+
+.genres-card{
     display:flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-
+    font-family: 'Dongle', sans-serif
 }
+
+.genre-card {
+    background-color: yellow;
+    border-radius: 5px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-top: 5px;
+    border: 1px solid black;
+}
+
+
+

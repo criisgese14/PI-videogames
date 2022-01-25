@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { getVideogamesByName } from '../../Redux/Actions';
+import './searchBar.css'
 
 export const SearchBar = ({setCurrentPage}) => {
     const dispatch = useDispatch();
@@ -20,14 +21,15 @@ export const SearchBar = ({setCurrentPage}) => {
     }
 
     return (
-        <form onSubmit={ e => {handleSubmit(e)}}>
+        <form onSubmit={ e => {handleSubmit(e)}} className='search-container'>
             <input 
-                placeholder="Buscar mas juegos..."
+                placeholder="Search more games..."
                 type='text' 
                 value={name} 
-                onChange={e => handleInputChange(e)}>
+                onChange={e => handleInputChange(e)}
+                className='search-input'>
             </input>
-            <button>Search</button>
+            <button className='search-boton'>Search</button>
         </form>
     )
 }
