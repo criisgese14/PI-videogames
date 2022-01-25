@@ -1,10 +1,11 @@
 const axios = require('axios');
 const { Videogame, Genre } = require('../db.js');
 const { API_KEY } = process.env;
+const { Op } = require('sequelize')
 const getVideogames = async () => {
     try {
-        let llamadoDb = await Videogame.findAll({ include: [{model: Genre}] });
-        let llamado1 = await axios.get(`https://api.rawg.io/api/games?key=0693a90a055747698f5106853c37114f`)
+        let llamadoDb = await Videogame.findAll({ include: {model: Genre} });
+        let llamado1 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)
         let llamado2 = await axios.get(llamado1.data.next);
         let llamado3 = await axios.get(llamado2.data.next);
         let llamado4 = await axios.get(llamado3.data.next);
@@ -16,11 +17,9 @@ const getVideogames = async () => {
                 img: g.background_image,
                 name: g.name,
                 genres: g.genres.map(i => {
-                    return i.name
-                    
+                    return i.name     
                 }),
-                rating: g.rating
-
+                rating: g.rating,
         }})
         return allgames;
     } catch (error) {
@@ -28,11 +27,45 @@ const getVideogames = async () => {
     }
 }
 
+const getPlatforms = async () => {
+    try {
+        let llamado1 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)
+        //let llamado2 = await axios.get(llamado1.data.next);
+        //let juegos = [...llamado1.data.results, ...llamado2.data.results]
+        let platforms = llamado1.data.results?.map( p => {
+            return p.platforms.map(i => {
+                return i.platform.name
+            })
+        })
+        let aux = platforms.flat()
+        let plataformas = aux.filter((ele, pos) => {
+            return aux.indexOf(ele) == pos;
+        })
+        return plataformas.map( i => {
+            return {name: i}
+        });
+        
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
 const getVideogamesByName = async (name) => {
     try {
-        let llamado = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=0693a90a055747698f5106853c37114f`)
+        let juegosDb = await Videogame.findAll({
+            where: {
+                name: {
+                    [Op.iLike] : `%${name}%`
+                },
+            },
+            include: {
+                model: Genre,
+            }
+        })
+        let llamado = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`)
         let primeros = llamado.data.results.splice(0, 15)
-        let juegos = primeros?.map(g => {
+        allVideogames = juegosDb.concat(primeros)
+        let juegos = allVideogames?.map(g => {
             return {
                 id: g.id,
                 img: g.background_image,
@@ -43,7 +76,7 @@ const getVideogamesByName = async (name) => {
                 rating: g.rating
             }
         })
-        return juegos;   
+        return juegos.splice(0,15);   
     } catch (error) {
     console.log('falló getVideogamesByName ' + error)       
     }
@@ -52,7 +85,7 @@ const getVideogamesById = async (id) => {
     let isNumber = Number(id)
     if (typeof isNumber === 'number'){
     try {
-        let llamado = await axios.get(`https://api.rawg.io/api/games/${id}?key=0693a90a055747698f5106853c37114f`)
+        let llamado = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
         let aux = llamado.data
         let detalles = {
             img: aux.background_image,
@@ -93,13 +126,13 @@ const getVideogamesById = async (id) => {
 
 const createVideogame = async function (name, description, released, rating, platforms, genres) {
     try {
-        let newVideogame = await Videogame.create({
-            name: name,
-            description: description,
-            released: released,
-            rating: rating,
-            platforms: platforms
-        });
+            var newVideogame = await Videogame.create({
+                name: name,
+                description: description,
+                released: released,
+                rating: rating !== '' ? rating : undefined,
+                platforms: platforms
+            });
         let genresDb = await Genre.findAll({
             where: {
                 name : genres
@@ -118,5 +151,6 @@ module.exports = {
     getVideogames,
     getVideogamesByName,
     getVideogamesById,
-    createVideogame
+    createVideogame,
+    getPlatforms
 }

@@ -12,9 +12,8 @@ router.get('/', async function (req, res) {
     
         if (name) {
             const quince = await getVideogamesByName(name);
-            quince.length ? res.send(quince) : res.status(404).send('no existe ese videojuego')
+            res.send(quince)
             }
-            
     }
     catch (error) {
         console.log('fallo el llamado ' + error)

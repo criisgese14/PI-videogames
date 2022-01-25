@@ -4,8 +4,7 @@ const { Router } = require('express');
 const videogame = require('./videogame.js');
 const videogames = require('./videogames.js');
 const genres = require('./genres.js');
-const { default: axios } = require('axios');
-
+const platforms = require('./platforms.js')
 const router = Router();
 
 // Configurar los routers
@@ -13,23 +12,8 @@ const router = Router();
 router.use('/videogames', videogames);
 router.use('/videogame', videogame);
 router.use('/genres', genres);
+router.use('/platforms', platforms);
 
-// router.get('/temperament', async (req, res) => {
-//     let perros = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=5626fb4d-c612-4fc5-8440-ea4b88e6c712`)
-//     let temperamentos = perros.data?.map(t => {
-//         console.log(t.temperament.split(', ')) 
-//         return t.temperament.split(', ')
-//     })
-    // let result = temperamentos.filter((item,index)=>{
-    //     return temperamentos.indexOf(item) === index;
-    //   })
 
-    // for (i = 0; i < result.length; i++) {
-    //     console.log(result[i].split(', '))
-    //     var cortados= result[i].split(', ');
-    // }
-
-//     res.send(temperamentos)
-// })
 
 module.exports = router;
