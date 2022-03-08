@@ -39,7 +39,7 @@ export const VideogameDetail = () => {
             
             <div className="container-detail-PyG">
             <div className="detail-PyG">
-            <h3>Platforms </h3>
+            <h3 className="title-detail">Platforms </h3>
             {videogame.platforms?.map(p => {
                 return (
                     <h3 key={p}>{p}</h3>
@@ -47,7 +47,7 @@ export const VideogameDetail = () => {
             })}
             </div>
             <div className="detail-PyG">
-            <h3>Genres </h3>
+            <h3 className="title-detail">Genres </h3>
             {videogame.genres?.map(p => {
                 return(  
                     <h3 key={p.name}>{p.name}</h3>
