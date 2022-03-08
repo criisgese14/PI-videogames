@@ -3,18 +3,18 @@
 }
 
 .search-input {
-    padding: 7px;
-    margin-right: 7px;
-    border-radius: 15px;
-    border: 1px solid #0a0e17;
+    padding: 0.7em;
+    margin-right: 1em;
+    border-radius: 2em;
+    border: 0.1em solid #0a0e17;
 }
 
 .search-boton {
-    border-radius: 15px;
+    border-radius: 1.5em;
     background-color: #284259;
     color: yellow;
-    border: 1px solid yellow;
-    padding: 7px;
+    border: 0.1em solid yellow;
+    padding: 0.6em;
 }
 
 .search-boton:hover {

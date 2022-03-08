@@ -3,26 +3,23 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    width: 1366px;
-    height: 629px;
+    height: 100vh;
 }
 
 .landingImg {
-    width: 100%;
-    height: 100%;
     opacity: 50%;
 }
 
 .landingTitle {
     position: absolute;
-    top: 10%;
-    left: 36%;
-    -webkit-text-stroke: 500% black;
+    top: 10vh;
+    left: 36vw;
+    /* -webkit-text-stroke: 500% black; */
     color: yellow;
     justify-content: center;
     margin: auto;
     font-family: 'Dongle', sans-serif;
-    font-size: 75px;
+    font-size: 5em;
 }
 
 .button-home {
@@ -30,12 +27,12 @@
     justify-content: center;
     margin: auto;   
     cursor: pointer;
-    top: 75%;
-    left: 44%;
+    top: 75vh;
+    left: 45vw;
     padding: 10px;
     border-radius: 30px;
     border: 1px solid yellow;
     background-color: #141b29;
     color: yellow;
-    font-size: 37px;
+    font-size: 2em;
 }

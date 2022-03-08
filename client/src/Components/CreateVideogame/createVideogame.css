@@ -7,8 +7,8 @@
     display: flex;
     flex-direction: column;
     border: 1px solid yellow;
-    border-radius: 20px;
-    height: 640px;
+    border-radius: 2em;
+    height: 75vh;
     justify-content: space-evenly;
     width: 80%;
     margin: 0 auto;
@@ -21,14 +21,14 @@
 
 .input-form {
     background-color: #141b29;
-    border: 1px solid yellow;
-    border-radius: 8px;
+    border: 0.1em solid yellow;
+    border-radius: 1em;
     color: white;
-    padding: 5px;
+    padding: 0.5em;
 }
 
 .input-form:focus {
-    border: 1px solid yellow;
+    border: 0.1em solid yellow;
     outline: none;
 }
 
@@ -42,21 +42,21 @@
 }
 
 .container-PyG {
-    border: 1px solid yellow;
-    width: 40%;
-    border-radius: 20px;
-    padding: 0 10px;
+    border: 0.1em solid yellow;
+    width: 34%;
+    border-radius: 1em;
+    padding: 1em 1em;
 }
 
 .select-PyG {
     background-color: #141b29;
     color: yellow;
-    border: 1px solid yellow;
-    border-radius: 5px;
+    border: 0.1em solid yellow;
+    border-radius: 0.5em;
 }
 
 select:focus {
-    border: 1px solid yellow;
+    border: 0.1em solid yellow;
     outline: none;
 }
 
@@ -64,9 +64,9 @@ select:focus {
     display: flex;
     color: black;
     background-color: yellow;
-    border-radius: 7px;
-    border: 2px solid black;
-    margin: 0 auto 5px auto; 
+    border-radius: 0.7em;
+    border: 0.2em solid black;
+    margin: 0 auto 2vh auto; 
 }
 
 .container-etiqueta {
@@ -78,9 +78,9 @@ select:focus {
 }
 
 .title-etiqueta {
-    height: 10px;
-    padding-bottom: 12px;
-    margin: 3px;
+    height: 2vh;
+    padding-bottom: 0.5em;
+    margin: 0.2em;
     font-weight: 600;
 }
 
@@ -104,41 +104,33 @@ textarea {
     resize: none;
     border-radius: 5px;
     background-color: #141b29;
-    border: 1px solid yellow;
-    border-radius: 8px;
+    border: 0.1em solid yellow;
+    border-radius: 1em;
     color: white;
-    padding: 10px;
+    padding: 1em;
 }
 
 .textarea:focus {
-    border: 1px solid yellow;
+    border: 0.1em solid yellow;
     outline: none;
 }
 
 .boton-crear {
-    width: 15%;
+    width: 10%;
     margin: 0 auto;
     cursor: pointer;
-    height: 5%;
-    border-radius: 10px;
-    border: 2px solid black;
+    height: 7%;
+    border-radius: 2em;
+    border: 0.2em solid black;
     background-color: yellow;
 }
 
 .boton-disabled {
-    width: 15%;
+    width: 10%;
     margin: 0 auto;
     cursor: not-allowed;
-    height: 5%;
-    border-radius: 10px;
-    border: 2px solid black;
+    height: 7%;
+    border-radius: 2em;
+    border: 0.2em solid black;
     background-color: rgb(163, 163, 0);
 }
-
-
-
-
-
-
-
-
