@@ -16,17 +16,11 @@ export const Nav = ({sort, filterGenres, filterCreated, setCurrentPage, refresh}
             </div>
             <div className='filters-nav'>
             <div className='filter-nav'>
-            <h2 className='title-nav'>Order by name:</h2>
+            <h2 className='title-nav'>Order by:</h2>
             <select onChange={e => sort(e)} className='select'>
                 <option value='Default'>Default</option>
                 <option value='Ascendente'>A - Z</option>
                 <option value='Descendente'>Z - A</option>
-            </select>
-            </div>
-            <div className='filter-nav'>
-            <h2 className='title-nav'>Order by rating:</h2>
-            <select onChange={e => sort(e)} className='select'>
-                <option value='Default'>Default</option>
                 <option value='Rating +'>Rating +</option>
                 <option value='Rating -'>Rating -</option>
             </select>
